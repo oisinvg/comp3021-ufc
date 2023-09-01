@@ -1,0 +1,23 @@
+library(ggplot2)
+
+ufc <- read.csv("ufc-master.csv", header = TRUE)r
+
+
+# 1.What is the most populated weight class?
+
+weight_classes <- unique(ufc[,c("weight_class")])
+
+
+
+# 2.Between the ‘red corner’ and the ‘blue corner’, which was more likely to achieve a knockout win?
+# 3.How do the betting odds correlate to a fighter’s statistical chance of winning?
+# 4.What was the knockout, submission, and general finish rate for each weight class? Which weight class has the highest rate of finishes?
+# 5.How does the weight class correlate to the round in which a finish is most likely to happen?
+  
+
+corners <- table(ufc[, c("Winner")]) #selects Winner column from df
+
+barplot(corners)
+
+redmethod <- ufc[ufc["Winner"] == "Red", c("finish")]
+bluemethod <- ufc[ufc["Winner"] == "Blue", c("finish")]
